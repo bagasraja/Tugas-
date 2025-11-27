@@ -1,0 +1,8 @@
+import json
+data = {
+    "tekanan": 1012.3,
+    "suhu": 28.1,
+    "kelembapan": 58.7
+}
+with open("data.json", "w") as f:
+    json.dump(data, f)
