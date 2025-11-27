@@ -6,8 +6,8 @@
     <title>IOT Dashboard - Sensor Lingkungan</title>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <!-- Canvas Gauges -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-gauges@2.1.7/gauge.min.js"></script>
+    <!-- Canvas Gauges (CDN alternatif) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-gauges/2.1.7/gauge.min.js"></script>
 
     <style>
         body { 
@@ -90,7 +90,7 @@
     </div>
 
     <script>
-        const MAX_DATA_POINTS = 3; // Untuk bar chart horizontal, cukup sedikit data
+        const MAX_DATA_POINTS = 3;
 
         // --- Inisialisasi Gauge ---
         const gaugePressure = new RadialGauge({
@@ -146,10 +146,10 @@
 
         // --- Inisialisasi Horizontal Bar Chart ---
         const chartData = {
-            labels: [], // akan berisi waktu: ["10:05", "10:06", "10:07"]
+            labels: [],
              [{
                 label: 'Tekanan (hPa)',
-                data: [],
+                 [],
                 backgroundColor: 'rgba(0, 123, 255, 0.6)',
                 borderColor: '#007bff',
                 borderWidth: 1
@@ -158,10 +158,10 @@
 
         const ctx = document.getElementById('pressureChart').getContext('2d');
         const pressureChart = new Chart(ctx, {
-            type: 'bar', // ✅ BAR CHART
+            type: 'bar',
              chartData,
             options: {
-                indexAxis: 'y', // ✅ BUAT HORIZONTAL
+                indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
@@ -183,9 +183,9 @@
         // --- SIMULASI DATA ACak ---
         function generateSensorData() {
             return {
-                tekanan: parseFloat((990 + Math.random() * 60).toFixed(2)),   // 990–1050 hPa
-                suhu: parseFloat((20 + Math.random() * 30).toFixed(1)),       // 20–50°C
-                kelembapan: parseFloat((30 + Math.random() * 60).toFixed(1)) // 30–90%
+                tekanan: parseFloat((990 + Math.random() * 60).toFixed(2)),
+                suhu: parseFloat((20 + Math.random() * 30).toFixed(1)),
+                kelembapan: parseFloat((30 + Math.random() * 60).toFixed(1))
             };
         }
 
